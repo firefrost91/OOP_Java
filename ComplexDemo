@@ -1,0 +1,86 @@
+class Complex {
+	double imaginaryPart ; 
+    double realPart ;	
+	
+public Complex(){
+	this.imaginaryPart=0 ; 
+	this.realPart= 0 ; 
+}
+
+public Complex(double realPart , double imaginaryPart){
+	this.imaginaryPart=imaginaryPart  ; 
+	this.realPart=realPart  ; 
+}
+
+public Complex(double...a){
+	this.realPart=a[0] ; 
+	if(a.length>1){
+	this.imaginaryPart=a[1]; 
+	}}
+
+Complex add(Complex otherNumber){
+	Complex result=new Complex(this.realPart+otherNumber.realPart ,this.imaginaryPart + otherNumber.imaginaryPart);
+	return result ;
+}
+
+Complex  subtract(Complex otherNumber){
+	Complex result=new Complex(this.realPart-otherNumber.realPart ,this.imaginaryPart-otherNumber.imaginaryPart);
+	return result ;
+}
+
+
+Complex multiply(Complex otherNumber){
+	double real = (this.realPart*otherNumber.realPart)-(this.imaginaryPart*otherNumber.imaginaryPart); 
+	double imag = (this.realPart*otherNumber.imaginaryPart)+(this.imaginaryPart*otherNumber.realPart);
+	Complex result=new Complex(real ,imag);
+	return result ;
+}
+
+
+Complex div(Complex otherNumber){
+	Complex otherNumberconj = new Complex(otherNumber.realPart , -otherNumber.imaginaryPart); 
+	Complex den = new Complex() ;
+	den=otherNumber.multiply(otherNumberconj);
+	Complex num=new Complex(); 
+	num=this.multiply(otherNumberconj);
+	double real , imag ; 
+	real= num.realPart/den.realPart ; 
+	imag=num.imaginaryPart/den.realPart ; 
+	Complex result=new Complex(real ,imag);
+	return result ;
+}
+
+public double getImaginaryPart() {
+	return imaginaryPart;
+}
+
+public double getRealPart() {
+	return realPart;
+}
+
+public void setImaginaryPart(double imaginaryPart) {
+	this.imaginaryPart = imaginaryPart;
+}
+
+public void setRealPart(double realPart) {
+	this.realPart = realPart;
+}
+
+void display(){
+	System.out.println("Result = "+ this.realPart+" +"+this.imaginaryPart+"i");
+}
+}
+
+public class ComplexDemo {
+
+	public static void main(String[] args) {
+		Complex c1= new Complex(1 ,1 ); 
+		Complex c2= new Complex(1 ,1 ); 
+		Complex c3= new Complex(); 
+		c3=c1.multiply(c2); 
+		c3.display();
+		c3=c1.div(c2);
+	    c3.display();
+	}
+
+}
