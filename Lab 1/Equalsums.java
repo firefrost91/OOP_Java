@@ -1,4 +1,4 @@
-public class Main
+public class Equalsums
 {
 	public static void main(String[] args) {
 	int p ; 
