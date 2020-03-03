@@ -7,8 +7,11 @@ public class Main
 		Bubblesort b1 = new Bubblesort(); 
 		b1.Sort(A); 
 		for(i=0 ; i < A.length ; i ++){
-		    System.out.println(A[i]);}
-		
+		    System.out.print(A[i]);}
+		String S[]= {"am","ac","ad"};
+		b1.Sort(S); 
+		for(i=0 ; i < S.length ; i ++){
+		    System.out.print(S[i]);}
 	}
 }
 
